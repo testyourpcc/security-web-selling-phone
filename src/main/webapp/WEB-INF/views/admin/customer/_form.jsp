@@ -64,7 +64,7 @@
 				<div class="form-group col-sm-12">
 					<button class="btn btn-primary" formaction="${base}/create" onClick="ValidateForm(this.form)">Create</button>
 					<button class="btn btn-warning" formaction="${base}/update">Update</button>
-					<button class="btn btn-danger" formaction="${base}/delete">Delete</button>
+<%-- 					<button class="btn btn-danger" formaction="${base}/delete">Delete</button> --%>
 					<a class="btn btn-default" href="${base}/index">Reset</a>
 				</div>
 			</div>

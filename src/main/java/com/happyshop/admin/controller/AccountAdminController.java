@@ -136,7 +136,7 @@ public class AccountAdminController {
 			return "admin/account/edit";
 		} 
 		if(!file.isEmpty()) {
-			String dir = app.getRealPath("static/images/admin");
+			String dir = app.getRealPath("static/images/customers");
 			File f = new File(dir, file.getOriginalFilename());
 			file.transferTo(f);
 			user.setPhoto(f.getName());

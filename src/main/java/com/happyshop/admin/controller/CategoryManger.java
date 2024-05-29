@@ -66,16 +66,16 @@ public class CategoryManger {
     public String delete(RedirectAttributes model, 
             @RequestParam(value="id", required = false) Integer id1, 
             @PathVariable(value="id", required = false) Integer id2) {
-        Integer idToDelete = id1 != null ? id1 : id2;
-        if(idToDelete == null) {
-            // Xử lý trường hợp không có ID được cung cấp
-            // Ví dụ: Hiển thị thông báo lỗi, chuyển hướng, vv.
-        	model.addFlashAttribute("error", "Tên loại hoặc tên hãng không phù hợp");
-            return "redirect:/admin/category/index"; // Chuyển hướng về trang danh sách
+    	Integer idToDelete = id1 != null ? id1 : id2;
+        try {
+        	dao.delete(idToDelete);
+            model.addAttribute("message", "Xóa thành công!");            
+        }catch (Exception e) {
+        	e.printStackTrace();
+        	model.addAttribute("message", "Xóa that bai!");  
         }
         
-        dao.delete(idToDelete);
-        model.addAttribute("message", "Xóa thành công!");
         return "redirect:/admin/category/index";
+        
     }
 }

@@ -83,13 +83,20 @@ public class ProductManger {
 	public String delete(RedirectAttributes model, 
 			@RequestParam(value="id", required = false) Integer id1, 
 			@PathVariable(value="id", required = false) Integer id2) {
-		if(id1 != null) {
-			dao.delete(id1);
-		}else {
-			dao.delete(id2);
+		try {
+			if(id1 != null) {
+				dao.delete(id1);
+			}else {
+				dao.delete(id2);
+			}
+			
+			model.addAttribute("message", "Xóa thành công!");
+			return "redirect:/admin/product/index";
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "Xay ra loi trong qua trinh xu li!");
+			return "redirect:/admin/product/index";
 		}
 		
-		model.addAttribute("message", "Xóa thành công!");
-		return "redirect:/admin/product/index";
 	}
 }

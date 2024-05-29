@@ -83,32 +83,29 @@ public class UserManger {
 		return "redirect:/admin/customer/edit/" + entity.getId();
 	}
 
-	@RequestMapping(value = { "/admin/customer/delete", "/admin/customer/delete/{id}" })
-	public String delete(RedirectAttributes model, @RequestParam(value = "id", required = false) String id1,
-			@PathVariable(value = "id", required = false) String id2) {
-		if (id1 != null) {
-			dao.delete(id1);
-		} else {
-			dao.delete(id2);
-		}
-
-		model.addAttribute("message", "Xóa thành công!");
-		return "redirect:/admin/customer/index";
-	}
-
-	int pageSize = 8;
-
-	@ResponseBody
-	@RequestMapping("/pager/customer/page-count")
-	public long pageCount() {
-
-		return dao.getPageCount(pageSize);
-	}
-
-	@ResponseBody
-	@RequestMapping("/pager/customer/page/{pageNo}")
-	public List<User> getPage(@PathVariable("pageNo") int pageNo) {
-		List<User> list = dao.getPage(pageNo, pageSize);
-		return list;
-	}
+	/*
+	 * @RequestMapping(value = { "/admin/customer/delete",
+	 * "/admin/customer/delete/{id}" }) public String delete(RedirectAttributes
+	 * model, @RequestParam(value = "id", required = false) String id1,
+	 * 
+	 * @PathVariable(value = "id", required = false) String id2) { if (id1 != null)
+	 * { dao.delete(id1); } else { dao.delete(id2); }
+	 * 
+	 * model.addAttribute("message", "Xóa thành công!"); return
+	 * "redirect:/admin/customer/index"; }
+	 * 
+	 * int pageSize = 8;
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/pager/customer/page-count") public long pageCount() {
+	 * 
+	 * return dao.getPageCount(pageSize); }
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping("/pager/customer/page/{pageNo}") public List<User>
+	 * getPage(@PathVariable("pageNo") int pageNo) { List<User> list =
+	 * dao.getPage(pageNo, pageSize); return list; }
+	 */
 }

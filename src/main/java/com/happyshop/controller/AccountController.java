@@ -77,7 +77,7 @@ public class AccountController {
 			model.addAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!"); 
 
 		} else if (!user.getActivated()) {
-			model.addAttribute("message", "Tài khoản chưa được kích hoạt!");
+			model.addAttribute("message", "Tài khoản chưa được kích hoạt or blocked!");
 		}else if (user.getAdmin()) {
 			model.addAttribute("message", "Sai tên đăng nhập hoặc mật khẩu!");
 		} else {
@@ -145,7 +145,7 @@ public class AccountController {
 		model.addAttribute("message", "Đăng ký thành công. Vui lòng kiểm tra mail để kích hoạt tài khoản!");
 
 
-		String from = "happyshopsuport2020@gmail.com";
+		String from = "ngoductuanvn2@gmail.com";
 		String to = user.getEmail();
 		String subject = "Welcome!";
 		String url = request.getRequestURL().toString().replace("register", "activate/" + user.getId());

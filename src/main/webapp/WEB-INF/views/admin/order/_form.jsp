@@ -31,7 +31,7 @@
 			</div>
 			<div class="form-group">
 				<label>Tổng tiền:</label>
-				<f:formatNumber value="${entity.amount}" pattern="#,###" /> VNĐ
+				<form:input path="amount"  class="form-control" readonly="true" />
 			</div>
 			<div>
 				<label>Trạng thái: </label>

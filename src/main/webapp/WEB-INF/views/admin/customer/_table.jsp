@@ -32,7 +32,7 @@
 									<td>${e.activated?'Yes':'No'}</td>
 									<td>${e.admin?'Admin':'User'}</td>
 									<td><a class="btn btn-sm btn-info" href="${base}/edit/${e.id}">Edit</a> 
-									<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}">Delete</a>
+<%-- 									<a class="btn btn-sm btn-danger" href="${base}/delete/${e.id}">Delete</a> --%>
 									</td>
 								</tr>
 							</c:forEach>
