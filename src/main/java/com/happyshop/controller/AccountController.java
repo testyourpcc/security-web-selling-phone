@@ -181,7 +181,7 @@ public class AccountController {
 		} else if (!email.equals(user.getEmail())) {
 			model.addAttribute("message", "Email không đúng!");
 		} else {
-			String from = "happyshopsuport2020@gmail.com";
+			String from = "ngoductuanvn2@gmail.com";
 			String to = user.getEmail();
 			String subject = "Quên mật khẩu!";
 			String body = "Happy Shop xin chào! Mật khẩu của bạn là: " + user.getPassword();
@@ -248,9 +248,15 @@ public class AccountController {
 			file.transferTo(f);
 			user.setPhoto(f.getName());
 		}
-		dao.update(user);
-		session.setAttribute("user", user);
-		model.addAttribute("message", "Cập nhật tài khoản thành công!");
+		try {
+			dao.update(user);
+			session.setAttribute("user", user);
+			model.addAttribute("message", "Cập nhật tài khoản thành công!");
+		}catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "Cập nhật tài khoản thất bại!");
+		}
+		
 
 
 		return "account/edit";

@@ -70,13 +70,18 @@ public class OrderController {
 			details.add(detail);
 
 		}
-		dao.create(order, details);
-		cart.clear();
-		 
-		model.addAttribute("message", "Đặt hàng thành công!");
-
+		try {
+			dao.create(order, details);
+			cart.clear();
+			model.addAttribute("message", "Đặt hàng thành công!");
+			return "redirect:/order/list";
+		}catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "Đặt hàng thất bại!");
+			return "redirect:/order/checkout";
+		}
 		
-		return "redirect:/order/list";
+		
 
 	}
 	

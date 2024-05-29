@@ -16,7 +16,8 @@
 					<label>Mật khẩu:</label>
 					<form:input path="password" type="password" class="form-control"
 						required="required" pattern=".{6,}"
-						title="Mật khẩu phải từ 6 ký tự trở lên" />
+						title="Mật khẩu phải từ 6 ký tự trở lên" 
+						readonly="${!empty entity.password}" />
 				</div>
 			</div>
 			<div class="row">

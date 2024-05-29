@@ -59,9 +59,14 @@ public class ProductManger {
 			String path = app.getRealPath("/static/images/products/"+entity.getImage());
 			file.transferTo(new File(path));
 		}
+		try {
+			dao.create(entity);
+			model.addAttribute("message", "Thêm mới thành công!");
+		}catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "Thêm mới thất bại!");
+		}
 		
-		dao.create(entity);
-		model.addAttribute("message", "Thêm mới thành công!");
 		return "redirect:/admin/product/index";
 	}
 	

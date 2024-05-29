@@ -65,8 +65,13 @@ public class UserManger {
 		}
 		///sua code
 		entity.setPassword(BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt(12)));
-		dao.create(entity);
-		model.addAttribute("message", "Thêm mới thành công!");
+		try {
+			dao.create(entity);
+			model.addAttribute("message", "Thêm mới thành công!");
+		}catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("message", "Thao tác không thành công, vui lòng kiểm tra các tham số trong khi thao tác!");
+		}
 		return "redirect:/admin/customer/index";
 	}
 

@@ -29,10 +29,11 @@
 				<label>Địa chỉ:</label>
 				<form:input path="address" class="form-control" />
 			</div>
-			<div class="form-group">
-				<label>Tổng tiền:</label>
-				<form:input path="amount"  class="form-control" readonly="true" />
-			</div>
+			 <div class="form-group">
+            <label>Tổng tiền:</label>
+            	<input type="text" id="amountFormatted" class="form-control" readonly="true" />
+            	<form:input path="amount" id="amount" class="form-control" type="hidden" />
+       		</div>
 			<div>
 				<label>Trạng thái: </label>
 				<span class="btn btn-warning" style="padding:0px 10px 0px 10px"><form:radiobutton path="status" value="1"  /> Chưa giao hàng </span>
@@ -68,4 +69,14 @@
 		</c:if>
 	</div>
 </div>
-
+ <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var amountField = document.getElementById("amount");
+            var amountFormattedField = document.getElementById("amountFormatted");
+            var amountValue = parseFloat(amountField.value);
+            if (!isNaN(amountValue)) {
+                // Định dạng giá trị để hiển thị
+                amountFormattedField.value = amountValue.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+            }
+        });
+    </script>
